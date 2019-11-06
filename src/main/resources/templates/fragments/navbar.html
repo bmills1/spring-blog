@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<nav th:fragment="main-navbar">
+    <ul>
+        <li> <a href="/">Home</a></li>
+        <li> <a href="/join">Join</a></li>
+        <li> <a href="/hello">Hello</a></li>
+    </ul>
+</nav>
+<header th:fragment="header">
+   <logo><img src="" alt=""></logo>
+</header>
+<footer th:fragment="footer">
+    <ul>
+        <li> <a href="/">Home</a></li>
+        <li> <a href="/join">Join</a></li>
+        <li> <a href="/hello">Hello</a></li>
+    </ul>
+</footer>
+
+//many fragments can be added here navbars, forms, etc. Change fragment names.

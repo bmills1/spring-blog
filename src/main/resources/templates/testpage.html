@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Testing</title>
+    <th:block th:replace="fragments/header :: main-header(branch)"/>
+</head>
+<body>
+<h1 name="branch" th:text="${branch}">Testing</h1>
+</body>
+</html>

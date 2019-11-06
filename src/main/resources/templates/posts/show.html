@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="card">
+    <form th:action= "@{'/posts/delete'}" method="post">
+    <input type="hidden" name="id" th:value="${post.id}">
+        <h1 th:text="${post.title}"></h1>
+        <p th:text="${post.body}"></p>
+        <button><a onclick="return confirm('Are you sure?')">delete</a></button>
+    </form>
+        <button><a th:href="@{'/posts/edit/' + ${post.id}}">edit</a></button>
+</div>
+</body>
+</html>

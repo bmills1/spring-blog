@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Join</title>
+
+        <th:block th:replace="fragments/header :: main-header(branch)"/>
+</head>
+<body>
+
+
+
+<form action="/testcolor" method="post">
+    <select name="branch">
+        <option value="default">Make a Selection</option>
+        <option value="army">Army</option>
+        <option value="airforce">Air Force</option>
+        <option value="navy">Navy</option>
+        <option value="marines">Marines</option>
+    </select>
+    <button>Enter</button>
+</form>
+</body>
+</html>
