@@ -2,14 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Post</title>
+    <title></title>
     <th:block th:replace="fragments/header :: overlay"/>
 </head>
-
 <body>
+<div class="card">
 
-<th:block th:replace="fragments/header :: editbox"/>
-
+        <input type="hidden" name="id" th:value="${post.id}">
+        <h1 th:text="${post.postDetails.historyOfPost}"></h1>
+</div>
 </body>
 <th:block th:replace="fragments/footer :: main-footer"/>
 </html>

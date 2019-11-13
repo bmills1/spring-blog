@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 
-<th:block th:fragment="main-header(branch)" th:switch="${branch}">
+<th:block th:fragment="main-header">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link th:case="${branch == airforce}" rel="stylesheet" href="/css/af.css">
-    <link th:case="${branch == army}" rel="stylesheet" href="/css/army.css">
-    <link th:case="${branch == marines}" rel="stylesheet" href="/css/marines.css">
-    <link th:case="${branch == navy}" rel="stylesheet" href="/css/navy.css">
-    <link th:case="${branch == navy}" rel="stylesheet" href="/css/navy.css">
+<!--    <link th:case="${branch == airforce}" rel="stylesheet" href="/css/af.css">-->
+<!--    <link th:case="${branch == army}" rel="stylesheet" href="/css/army.css">-->
+<!--    <link th:case="${branch == marines}" rel="stylesheet" href="/css/marines.css">-->
+<!--    <link th:case="${branch == navy}" rel="stylesheet" href="/css/navy.css">-->
+<!--    <link th:case="${branch == navy}" rel="stylesheet" href="/css/navy.css">-->
+    <link rel="stylesheet" href="/css/style.css">
+</th:block>
+
+<th:block th:fragment="overlay">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/overlay.css">
+
 </th:block>
 

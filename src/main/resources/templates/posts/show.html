@@ -1,18 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <th:block th:replace="fragments/header :: overlay"/>
 </head>
 <body>
-<div class="card">
-    <form th:action= "@{'/posts/delete'}" method="post">
-    <input type="hidden" name="id" th:value="${post.id}">
-        <h1 th:text="${post.title}"></h1>
-        <p th:text="${post.body}"></p>
-        <button><a onclick="return confirm('Are you sure?')">delete</a></button>
-    </form>
-        <button><a th:href="@{'/posts/edit/' + ${post.id}}">edit</a></button>
+<div class="container">
+
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+            <h1 class="my-4" th:text="${post.title}">
+                <small></small>
+            </h1>
+            <div class="body-container">
+
+                <!-- Blog Post -->
+                <div class="card mb-4">
+
+                    <!--                    <img th:each="image : ${post.postImages}" class="card-img-top" th:src="${image.url}" alt="Card image cap">-->
+                    <div class="card-body">
+                        <form th:action="@{'/posts/delete'}" method="post">
+                            <input type="hidden" name="id" th:value="${post.id}">
+                            <p th:text="${post.body}"></p>
+                            <h3>Created by</h3>
+                            <p th:text="${post.getUser().getEmail()}"></p>
+
+                            <button class="open-overlay btn btn-warning btn-block"><a
+                                    th:href="@{'/posts/edit/' + ${post.id}}">edit</a></button>
+                            <a th:href="@{'/posts/history/' + ${post.id}}" class="btn btn-primary">History</a>
+                            <p th:text="${post.getTags()}">History</p>
+                        </form>
+                        <div class="card-footer text-muted">
+                            <button class="btn btn-danger btn-block"><a
+                                    onclick="return confirm('Are you sure?')">delete</a></button>
+                        </div>
+                    </div>
+                </div>
+                <th:block th:fragment="editbox">
+                    <div class="overlay" aria-hidden="true" id="edit-overlay">
+                        <div col-lg-8 col-md-10 mx-auto>
+                            <header class="jumbotron my-3">
+                                <h1 class="display-3 text-center">Edit Post</h1>
+                            </header>
+                            <div class="card p-3" id="edit-body">
+                                <form th:action="'/posts/edit/' + ${post.id}" th:method="post">
+                                    <div class="form-group title-box">
+                                        <label for="title">Title</label>
+                                        <input class="form-control" id="title" type="text" th:value="${post.title}"
+                                               name="title">
+                                    </div>
+                                    <div class="form-group body-box">
+                                        <label for="body">Description</label>
+                                        <textarea class="form-control" id="body" th:text="${post.body}"
+                                                  name="body"></textarea>
+                                    </div>
+                                    <button class="btn btn-warning btn-block">Update</button>
+                                    <button class="btn btn-primary btn-block close-overlay">Cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
+<th:block th:replace="fragments/footer :: main-footer"/>
 </html>
+
+<!--<h1><span th:text="${pet.name}"></span> toys...</h1>-->
+
+<!--<ul th:each="toy : ${pet.toys}">-->
+<!--    <li th:text="${toy.name}"></li>-->
+<!--</ul>-->
+
+
+<!--<form th:action="@{'/pets/' + ${pet.id} + '/add-toy'}" th:method="post">-->
+<!--    &lt;!&ndash;        name, brand, is_destroyed, description, pet_id&ndash;&gt;-->
+<!--    <input type="text" name="name" placeholder="enter name">-->
+<!--    <input type="text" name="brand" placeholder="enter brand">-->
+<!--    <input type="checkbox" placeholder="is destroyed" name="isDestroyed">-->
+<!--    <input type="text" name="description" placeholder="enter description">-->
+<!--    <button>Add Toy</button>-->
+<!--</form>-->

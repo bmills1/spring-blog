@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>List Tags</h1>
+
+<div th:each="tag : ${tags}">
+    <a th:href="@{'posts/tag/' + ${tag.name}}" class="post-title" th:text="${tag.name}"></a>
+</div>
+</body>
+</html>
+<!--<div th:each="post : ${posts}">-->
+<!--    <h3><span th:text="${post.title}"></span>'s Vets</h3>-->
+<!--    <ul th:each="tag : ${post.tags}">-->
+<!--        <li th:text="${tag.name}"></li>-->
+<!--    </ul>-->
+<!--    <form th:action="@{'/post/tag/' + ${post.id}}" th:method="post">-->
+<!--        <input type="text" name="name" placeholder="Enter name">-->
+<!--        <input type="text" name="address" placeholder="Enter address">-->
+<!--        <input type="text" name="phoneNumber" placeholder="Enter phone number">-->
+<!--        <button>Add Vet</button>-->
+<!--    </form>-->
+<!--</div>-->

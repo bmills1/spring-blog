@@ -1,22 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Posts</title>
-    <th:block></th:block>
+    <th:block th:replace="fragments/header :: main-header"/>
+
 </head>
 <body>
-<h1>All Posts</h1>
+<div class="container">
 
+    <div class="row">
 
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
 
+            <h1 class="my-4">Featured Posts
+                <small>All</small>
+            </h1>
+            <div class="body-container">
 
-<div class="card" th:each="post : ${posts}">
-    <a th:href="@{'posts/' + ${post.id}}">
-    <h1 th:text="${post.title}"></h1>
-    <p th:text="${post.body}"></p>
-    <input type="hidden" name="id" th:value="${post.id}">
-   </a>
+                <!-- Blog Post -->
+                <div class="card mb-4" th:each="post : ${posts}">
+                    <img th:each=" image: ${post.postImages}" class="card-img-top" th:src="${image.url}"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h2 class="post-title" th:text="${post.title}"></h2>
+                        <a th:href="@{'posts/' + ${post.id}}" class="btn btn-primary">Read More</a>
+                        <span class="card-text" th:text="${post.postDetails}"></span>
+                        <input type="hidden" name="id" th:value="${post.id}">
+                        <!--                    <a th:href="@{'/posts/history/' + ${post.id}}" class="btn btn-primary">History</a>-->
+                    </div>
+                    <div class="card-footer text-muted">
+                        Posted on January 1, 2017 by
+                        <a th:href="@{'/posts/history/' + ${post.id}}" class="btn">History</a>
+                        <div th:each="tag: ${post.tags}">
+                            <a th:href="@{'posts/tag/' + ${tag.name}}" th:text="${tag.name}"></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>

@@ -1,3 +1,20 @@
-body{
-    background-color: yellow;
+
+html,body{
+    max-height: 90vh;
+}
+body {
+    padding-top: 56px;
+    background-color: lightslategrey;
+}
+.row{
+    position: relative;
+
+}
+.body-container{
+    max-height:100vh;
+    overflow:scroll;
+}
+.allposts{
+    max-height: 100vh;
+    overflow: scroll;
 }
