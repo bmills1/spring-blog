@@ -2,9 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Posts</title>
-    <th:block th:replace="fragments/header :: main-header"/>
-
+    <title></title>
+    <th:block th:replace="fragments/header :: overlay"/>
 </head>
 <body>
 <div class="container">
@@ -20,7 +19,7 @@
             <div class="body-container">
 
                 <!-- Blog Post -->
-                <div class="card mb-4" th:each="post : ${posts}">
+                <div class="card mb-4" th:each="post: ${posts}">
                     <img th:each=" image: ${post.postImages}" class="card-img-top" th:src="${image.url}"
                          alt="Card image cap">
                     <div class="card-body">

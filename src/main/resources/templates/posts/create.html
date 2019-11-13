@@ -17,7 +17,6 @@
         <label for="tags">Tags</label>
             <option value="" disabled="disabled" selected="selected">Choose your option</option>
             <option th:each="tag : ${post.tags}" th:text="${tag.name}" th:value="${tag.id}" th:selected="${tag.id != 0}" />
-
             <option  th:each="tag : ${tags}" th:text="${tag.name}" th:value="${tag.id}"/>
         </select>
     </div>

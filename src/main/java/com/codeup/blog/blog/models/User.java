@@ -15,12 +15,18 @@ public class User {
     private String email;
     @Column( length = 1000, unique = true)
     private String username;
-    @Column( length = 1000)
+    @Column( length = 1000, unique = true)
     private String password;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
     public User() {
+    }
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
     }
 
     public User(String email, String username, String password, List<Post> posts) {

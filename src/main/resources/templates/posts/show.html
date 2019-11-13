@@ -29,10 +29,10 @@
                             <h3>Created by</h3>
                             <p th:text="${post.getUser().getEmail()}"></p>
 
-                            <button class="open-overlay btn btn-warning btn-block"><a
+                            <button onclick="on()" class=" btn btn-warning btn-block"><a
                                     th:href="@{'/posts/edit/' + ${post.id}}">edit</a></button>
-                            <a th:href="@{'/posts/history/' + ${post.id}}" class="btn btn-primary">History</a>
-                            <p th:text="${post.getTags()}">History</p>
+<!--                            <a th:href="@{'/posts/history/' + ${post.id}}" class="btn btn-primary">History</a>-->
+
                         </form>
                         <div class="card-footer text-muted">
                             <button class="btn btn-danger btn-block"><a
@@ -40,31 +40,61 @@
                         </div>
                     </div>
                 </div>
-                <th:block th:fragment="editbox">
-                    <div class="overlay" aria-hidden="true" id="edit-overlay">
-                        <div col-lg-8 col-md-10 mx-auto>
-                            <header class="jumbotron my-3">
-                                <h1 class="display-3 text-center">Edit Post</h1>
-                            </header>
-                            <div class="card p-3" id="edit-body">
-                                <form th:action="'/posts/edit/' + ${post.id}" th:method="post">
-                                    <div class="form-group title-box">
-                                        <label for="title">Title</label>
-                                        <input class="form-control" id="title" type="text" th:value="${post.title}"
-                                               name="title">
-                                    </div>
-                                    <div class="form-group body-box">
-                                        <label for="body">Description</label>
-                                        <textarea class="form-control" id="body" th:text="${post.body}"
-                                                  name="body"></textarea>
-                                    </div>
-                                    <button class="btn btn-warning btn-block">Update</button>
-                                    <button class="btn btn-primary btn-block close-overlay">Cancel</button>
-                                </form>
-                            </div>
+
+
+                <div id="overlay" onclick="off()">
+                    <div col-lg-8 col-md-10 mx-auto>
+                        <header class="jumbotron my-3">
+                            <h1 class="display-3 text-center">Edit Post</h1>
+                        </header>
+                        <div class="card p-3" id="edit-body">
+                            <form th:action="'/posts/edit/' + ${post.id}" th:method="post">
+                                <div class="form-group title-box">
+                                    <label for="title">Title</label>
+                                    <input class="form-control" id="title" type="text" th:value="${post.title}"
+                                           name="title">
+                                </div>
+                                <div class="form-group body-box">
+                                    <label for="body">Description</label>
+                                    <textarea class="form-control" id="body" th:text="${post.body}"
+                                              name="body"></textarea>
+                                </div>
+                                <button class="btn btn-warning btn-block">Update</button>
+                                <button class="btn btn-primary btn-block close-overlay">Cancel</button>
+                            </form>
                         </div>
                     </div>
-                </th:block>
+                </div>
+
+<!--                <div style="padding:20px">-->
+<!--                    <h2>Overlay with Text</h2>-->
+<!--                    <button onclick="on()">Turn on overlay effect</button>-->
+                </div>
+<!--                <th:block th:fragment="overlay">-->
+<!--                    <div class="overlay" aria-hidden="true" id="edit-overlay">-->
+<!--                        <div col-lg-8 col-md-10 mx-auto>-->
+<!--                            <header class="jumbotron my-3">-->
+<!--                                <h1 class="display-3 text-center">Edit Post</h1>-->
+<!--                            </header>-->
+<!--                            <div class="card p-3" id="edit-body">-->
+<!--                                <form th:action="'/posts/edit/' + ${post.id}" th:method="post">-->
+<!--                                    <div class="form-group title-box">-->
+<!--                                        <label for="title">Title</label>-->
+<!--                                        <input class="form-control" id="title" type="text" th:value="${post.title}"-->
+<!--                                               name="title">-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group body-box">-->
+<!--                                        <label for="body">Description</label>-->
+<!--                                        <textarea class="form-control" id="body" th:text="${post.body}"-->
+<!--                                                  name="body"></textarea>-->
+<!--                                    </div>-->
+<!--                                    <button class="btn btn-warning btn-block">Update</button>-->
+<!--                                    <button class="btn btn-primary btn-block close-overlay">Cancel</button>-->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </th:block>-->
             </div>
         </div>
     </div>

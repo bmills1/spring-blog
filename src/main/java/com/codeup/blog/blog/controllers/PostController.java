@@ -39,7 +39,7 @@ public class PostController {
     public String index(Model vModel) {
 
         vModel.addAttribute("posts", postDao.findAll());
-        return "posts/index.html";
+        return "posts/index";
     }
 
 
@@ -76,7 +76,7 @@ public class PostController {
         oldPost.setTitle(title);
         oldPost.setBody(body);
         postDao.save(oldPost);
-        return "redirect:/posts/" + id;
+        return "redirect:/posts/show";
     }
 
     //post history
