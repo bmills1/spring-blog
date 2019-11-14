@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <th:block th:replace="fragments/header :: overlay"/>
+    <th:block th:replace="fragments/header :: main-header"/>
 </head>
 <body>
+<div th:replace="fragments/navbar :: main-navbar"></div>
 <div class="container">
 
     <div class="row">
@@ -18,31 +18,9 @@
             </h1>
             <div class="body-container">
 
-                <!-- Blog Post -->
-                <div class="card mb-4">
-
-                    <!--                    <img th:each="image : ${post.postImages}" class="card-img-top" th:src="${image.url}" alt="Card image cap">-->
-                    <div class="card-body">
-                        <form th:action="@{'/posts/delete'}" method="post">
-                            <input type="hidden" name="id" th:value="${post.id}">
-                            <p th:text="${post.body}"></p>
-                            <h3>Created by</h3>
-                            <p th:text="${post.getUser().getEmail()}"></p>
-
-                            <button onclick="on()" class=" btn btn-warning btn-block"><a
-                                    th:href="@{'/posts/edit/' + ${post.id}}">edit</a></button>
-<!--                            <a th:href="@{'/posts/history/' + ${post.id}}" class="btn btn-primary">History</a>-->
-
-                        </form>
-                        <div class="card-footer text-muted">
-                            <button class="btn btn-danger btn-block"><a
-                                    onclick="return confirm('Are you sure?')">delete</a></button>
-                        </div>
-                    </div>
-                </div>
-
-
                 <div id="overlay" onclick="off()">
+
+                    <!-- Blog Post -->
                     <div col-lg-8 col-md-10 mx-auto>
                         <header class="jumbotron my-3">
                             <h1 class="display-3 text-center">Edit Post</h1>
@@ -64,12 +42,127 @@
                             </form>
                         </div>
                     </div>
+
+
+                </div>
+                <div style="padding:20px">
+                    <div class="card mb-4">
+
+                        <!--                    <img th:each="image : ${post.postImages}" class="card-img-top" th:src="${image.url}" alt="Card image cap">-->
+                        <div class="card-body">
+                            <form th:action="@{'/posts/delete'}" method="post">
+                                <input type="hidden" name="id" th:value="${post.id}">
+                                <p th:text="${post.body}"></p>
+                                <h3>Created by</h3>
+                                <p th:text="${post.getUser().getEmail()}"></p>
+                            </form>
+                            <form>
+                                <button onclick="on()" class="open-overlay btn btn-warning btn-block">Edit</button>
+                            </form>
+                                <!--                            <a th:href="@{'/posts/history/' + ${post.id}}" class="btn btn-primary">History</a>-->
+
+                            <div class="card-footer text-muted">
+                                <button class="btn btn-danger btn-block"><a
+                                        onclick="return confirm('Are you sure?')">delete</a></button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-<!--                <div style="padding:20px">-->
-<!--                    <h2>Overlay with Text</h2>-->
+
+
+
 <!--                    <button onclick="on()">Turn on overlay effect</button>-->
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<th:block th:replace="/fragments/footer :: main-footer"/>
+</body>
+</html>
+
+
+<!--<h1><span th:text="${pet.name}"></span> toys...</h1>-->
+
+<!--<ul th:each="toy : ${pet.toys}">-->
+<!--    <li th:text="${toy.name}"></li>-->
+<!--</ul>-->
+
+
+<!--<form th:action="@{'/pets/' + ${pet.id} + '/add-toy'}" th:method="post">-->
+<!--    &lt;!&ndash;        name, brand, is_destroyed, description, pet_id&ndash;&gt;-->
+<!--    <input type="text" name="name" placeholder="enter name">-->
+<!--    <input type="text" name="brand" placeholder="enter brand">-->
+<!--    <input type="checkbox" placeholder="is destroyed" name="isDestroyed">-->
+<!--    <input type="text" name="description" placeholder="enter description">-->
+<!--    <button>Add Toy</button>-->
+<!--</form>-->
+<!--    <title></title>-->
+<!--    <th:block th:replace="fragments/header :: overlay"/>-->
+<!--    <style>-->
+<!--        #text{-->
+<!--            position: absolute;-->
+<!--            top: 50%;-->
+<!--            left: 50%;-->
+<!--            font-size: 50px;-->
+<!--            color: white;-->
+<!--            transform: translate(-50%,-50%);-->
+<!--            -ms-transform: translate(-50%,-50%);-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div id="overlay" onclick="off()">-->
+<!--    <div id="text">Overlay Text</div>-->
+<!--</div>-->
+
+<!--<div style="padding:20px">-->
+<!--    <h2>Overlay with Text</h2>-->
+<!--    <button onclick="on()">Turn on overlay effect</button>-->
+<!--</div>-->
+
+<!--<body>-->
+<!--<div class="container">-->
+
+<!--    <div class="row">-->
+
+<!--        &lt;!&ndash; Blog Entries Column &ndash;&gt;-->
+<!--        <div class="col-md-8">-->
+
+<!--            <h1 class="my-4" th:text="${post.title}">-->
+<!--                <small></small>-->
+<!--            </h1>-->
+<!--            <div class="body-container">-->
+
+<!--                &lt;!&ndash; Blog Post &ndash;&gt;-->
+<!--                <div class="card mb-4">-->
+
+<!--                    &lt;!&ndash;                    <img th:each="image : ${post.postImages}" class="card-img-top" th:src="${image.url}" alt="Card image cap">&ndash;&gt;-->
+<!--                    <div class="card-body">-->
+<!--                        <form th:action="@{'/posts/delete'}" method="post">-->
+<!--                            <input type="hidden" name="id" th:value="${post.id}">-->
+<!--                            <p th:text="${post.body}"></p>-->
+<!--                            <h3>Created by</h3>-->
+<!--                            <p th:text="${post.getUser().getEmail()}"></p>-->
+
+<!--                            <button class="open-overlay btn btn-warning btn-block"><a-->
+<!--                                    th:href="@{'/posts/edit/' + ${post.id}}">edit</a></button>-->
+<!--&lt;!&ndash;                            <a th:href="@{'/posts/history/' + ${post.id}}" class="btn btn-primary">History</a>&ndash;&gt;-->
+
+<!--                        </form>-->
+<!--                        <div class="card-footer text-muted">-->
+<!--                            <button class="btn btn-danger btn-block"><a-->
+<!--                                    onclick="return confirm('Are you sure?')">delete</a></button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                -->
 <!--                <th:block th:fragment="overlay">-->
 <!--                    <div class="overlay" aria-hidden="true" id="edit-overlay">-->
 <!--                        <div col-lg-8 col-md-10 mx-auto>-->
@@ -95,26 +188,20 @@
 <!--                        </div>-->
 <!--                    </div>-->
 <!--                </th:block>-->
-            </div>
-        </div>
-    </div>
-</div>
-</body>
-<th:block th:replace="fragments/footer :: main-footer"/>
-</html>
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--<script>-->
+<!--    function on() {-->
+<!--        document.getElementById("overlay").style.display = "block";-->
+<!--    }-->
 
-<!--<h1><span th:text="${pet.name}"></span> toys...</h1>-->
+<!--    function off() {-->
+<!--        document.getElementById("overlay").style.display = "none";-->
+<!--    }-->
+<!--    </script>-->
 
-<!--<ul th:each="toy : ${pet.toys}">-->
-<!--    <li th:text="${toy.name}"></li>-->
-<!--</ul>-->
-
-
-<!--<form th:action="@{'/pets/' + ${pet.id} + '/add-toy'}" th:method="post">-->
-<!--    &lt;!&ndash;        name, brand, is_destroyed, description, pet_id&ndash;&gt;-->
-<!--    <input type="text" name="name" placeholder="enter name">-->
-<!--    <input type="text" name="brand" placeholder="enter brand">-->
-<!--    <input type="checkbox" placeholder="is destroyed" name="isDestroyed">-->
-<!--    <input type="text" name="description" placeholder="enter description">-->
-<!--    <button>Add Toy</button>-->
-<!--</form>-->
+<!-- <th:block th:replace="fragments/footer :: main-footer"/>-->
+<!--</body>-->

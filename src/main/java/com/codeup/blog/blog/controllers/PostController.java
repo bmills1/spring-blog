@@ -64,10 +64,10 @@ public class PostController {
         return "redirect:/posts";
     }
 
-    @GetMapping("/posts/edit/{id}")
-    public String edit(@PathVariable long id, Model vModel) {
-        vModel.addAttribute("post", postDao.getOne(id));
-        return "/posts/edit";
+    @GetMapping("/post/edit/{id}")
+    public String edit(@PathVariable long id, Model viewModel) {
+        viewModel.addAttribute("post", postDao.getOne(id));
+        return "posts/show";
     }
 
     @PostMapping("/posts/edit/{id}")
@@ -76,7 +76,7 @@ public class PostController {
         oldPost.setTitle(title);
         oldPost.setBody(body);
         postDao.save(oldPost);
-        return "redirect:/posts/show";
+        return "redirect:/posts/" + id + "/edit";
     }
 
     //post history

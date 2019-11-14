@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <th:block th:replace="/fragments/header :: main-header"/>
 </head>
 <body>
+<div th:replace="fragments/navbar :: main-navbar"></div>
 <form th:action="@{'/posts/create'}" th:method="post" th:object="${post}">
     <label for="title">Title</label>
     <input type="text" placeholder="Enter post title" th:field="*{title}">

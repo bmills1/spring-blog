@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<nav th:fragment="main-navbar">
-    <ul>
-        <li> <a href="/">Home</a></li>
-        <li> <a href="/join">Join</a></li>
-        <li> <a href="/hello">Hello</a></li>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<nav class="navbar navbar-light bg-light navbar-expand-md" th:fragment="main-navbar">
+    <a class="navbar-brand" href="/">Spring Blog</a>
+    <ul class="navbar-nav">
+        <li class="nav-item mx-3"><a href="/posts">View Ads</a></li>
+        <li class="nav-item mx-3"><a href="/posts/create">Create Ad</a></li>
     </ul>
+    <ul class="navbar-nav ml-auto" sec:authorize="!isAuthenticated()">
+        <li class="nav-item mx-3"><a href="/sign-up">Register</a></li>
+        <li class="nav-item mx-3"><a href="/login">Login</a></li>
+        <!-- LOGOUT LIST ITEM -->
+    </ul>
+<ul class="navbar-nav ml-auto" sec:authorize="isAuthenticated()">
+        <li class="d-flex align-items-center mx-3">
+            <form class="d-flex align-items-center" th:action="@{/logout}" th:method="post">
+                <button style="border:none !important" class="btn-link btn p-0">Logout</button>
+            </form>
+        </li>
+</ul>
 </nav>
-<header th:fragment="header">
-   <logo><img src="" alt=""></logo>
-</header>
-<footer th:fragment="footer">
-    <ul>
-        <li> <a href="/">Home</a></li>
-        <li> <a href="/join">Join</a></li>
-        <li> <a href="/hello">Hello</a></li>
-    </ul>
-</footer>
 
 //many fragments can be added here navbars, forms, etc. Change fragment names.
